@@ -7,6 +7,16 @@ import java.util.Collection;
 
 public class AppAuthenticationToken extends UsernamePasswordAuthenticationToken {
 
+    String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public AppAuthenticationToken(Object principal, Object credentials) {
         super(principal, credentials);
     }
