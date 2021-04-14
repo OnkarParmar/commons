@@ -21,6 +21,15 @@ public class ApiResponse<T> {
                 .build();
     }
 
+    public static ApiResponse createStatusResponseWithMsg(Object data, boolean status, String msg) {
+        return ApiResponse.builder()
+                .code(HttpStatus.OK.value())
+                .status(status)
+		.msg(msg)
+                .data(data)
+                .build();
+    }
+
     public static ApiResponse createFailedResponse(int code, Object data) {
         return ApiResponse.builder()
                 .code(code)

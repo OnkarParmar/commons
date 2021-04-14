@@ -6,9 +6,9 @@
     
     <parent>
         <groupId>com.teamteach</groupId>
-		<artifactId>service-workspace</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-       <relativePath>../service-workspace/pom.xml</relativePath> 
+	<artifactId>service-workspace</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+       <relativePath>./parent.xml</relativePath> 
     </parent>
 
     <groupId>com.teamteach</groupId>
