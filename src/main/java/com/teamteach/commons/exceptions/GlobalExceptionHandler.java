@@ -32,6 +32,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             = { Exception.class})
     public final ResponseEntity<ApiResponse> handleAllExceptions(Exception ex, WebRequest request) {
         String message = ex.getMessage();
+	ex.printStackTrace();
         ApiResponse response = ApiResponse.createFailedResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), message);
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
