@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 @RequiredArgsConstructor
 class RabbitMQAdapter implements IMessagingPort {
 
-    static final String LISTENER_ID = "xlrtrabbitlistener";
+    static final String LISTENER_ID = "taihorabbitlistener";
 
     final RabbitTemplate rabbitTemplate;
     final RabbitListenerEndpointRegistry rabbitListenerEndpointRegistry;
