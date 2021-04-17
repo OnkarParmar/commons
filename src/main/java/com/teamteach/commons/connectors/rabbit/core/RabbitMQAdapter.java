@@ -34,15 +34,15 @@ class RabbitMQAdapter implements IMessagingPort {
     @Value("${listen.queue.names:,}")
     Set<String> queuenames;
 
-    Map<String,Consumer<? extends AbstractDocumentMsg>>
+    Map<String,Consumer<?>>
                 generalConsumers = new ConcurrentHashMap<>();
 
-    Map<String,Class<? extends AbstractDocumentMsg>> genMessageTypes = new ConcurrentHashMap<>();
+    Map<String,Class<?>> genMessageTypes = new ConcurrentHashMap<>();
 
     @Override
-    public <T extends AbstractDocumentMsg> boolean registerGeneralResponseListener(String channelname,
+    public <T> boolean registerGeneralResponseListener(String channelname,
                                                                                    Class<T> clazz,
-                                                                                   Consumer<? extends AbstractDocumentMsg> consumer) {
+                                                                                   Consumer<T> consumer) {
         if (generalConsumers.containsKey(channelname))
             return false;
         if (!queuenames.contains(channelname))
@@ -82,7 +82,7 @@ class RabbitMQAdapter implements IMessagingPort {
     }
 
     private void sendGeneralMessageToSubscriber(String queue, String msgStr) {
-        Class<? extends AbstractDocumentMsg> clazz = this.genMessageTypes.getOrDefault(queue, null);
+        Class<?> clazz = this.genMessageTypes.getOrDefault(queue, null);
         var respMsg =
                 AppJsonUtils.deserializeClass(msgStr, clazz);
         Consumer consumer

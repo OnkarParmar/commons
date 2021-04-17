@@ -6,9 +6,9 @@ import java.util.function.Consumer;
 
 public interface IMessagingPort {
 
-     <T extends AbstractDocumentMsg> boolean registerGeneralResponseListener(String channelname,
+     <T> boolean registerGeneralResponseListener(String channelname,
                                                                              Class<T> clazz,
-                                                                             Consumer<? extends AbstractDocumentMsg> consumer);
+                                                                             Consumer<T> consumer);
      // Sends the message to default exchange
      boolean  sendMessage(Object data);
      // Sends the message to specified exchange with routing key
