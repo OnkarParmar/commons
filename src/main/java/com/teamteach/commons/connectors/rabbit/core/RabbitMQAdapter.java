@@ -72,7 +72,7 @@ class RabbitMQAdapter implements IMessagingPort {
     @Transactional
     void receiveMessage(byte[] msgBytes , @Header(AmqpHeaders.CONSUMER_QUEUE) String queue) {
         String msgStr = new String(msgBytes);
-        log.info("Receved Message {} from Queue {}", msgStr , queue);
+        log.info("Received Message {} from Queue {}", msgStr , queue);
         try {
             sendGeneralMessageToSubscriber(queue, msgStr);
         } catch (Exception ex) {
