@@ -12,6 +12,7 @@ public class AnonymizeService {
     }
 
     public static String anonymizeData(String data) {
+        if(data == null || data.equals("")) return "";
         int numberOfRotations = ((int)(data.charAt(0)) % 5);
         while(numberOfRotations >= 0){
             data = rotate(data,1);
@@ -26,6 +27,7 @@ public class AnonymizeService {
     }
 
     public static String deAnonymizeData(String data) {
+        if(data == null || data.equals("")) return "";
         char dataArray[] = new char[data.length()];
         dataArray[0] = (char)((int)data.charAt(0) - 1);
         for(int i = 1 ; i < data.length() ; i++){
