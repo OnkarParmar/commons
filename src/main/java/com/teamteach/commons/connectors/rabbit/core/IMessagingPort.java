@@ -12,5 +12,5 @@ public interface IMessagingPort {
      // Sends the message to default exchange
      boolean  sendMessage(Object data);
      // Sends the message to specified exchange with routing key
-     boolean  sendMessage(String exchangename, String routingkey , Object data);
+     boolean  sendMessage(Object data, String routingkey);
 }

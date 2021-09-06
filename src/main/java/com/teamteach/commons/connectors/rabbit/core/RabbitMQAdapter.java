@@ -31,6 +31,9 @@ class RabbitMQAdapter implements IMessagingPort {
     boolean canbeStarted = false;
     boolean containerstarted = false;
 
+    @Value("${exchange.signup}")
+    String exchangename;
+
     @Value("${listen.queue.names:,}")
     Set<String> queuenames;
 
@@ -61,7 +64,7 @@ class RabbitMQAdapter implements IMessagingPort {
     }
 
     @Override
-    public boolean sendMessage(String exchangename, String routingkey, Object data) {
+    public boolean sendMessage(Object data, String routingkey) {
         System.out.println(exchangename+" --> "+routingkey);
         System.out.println(data);
         rabbitTemplate.convertAndSend(exchangename, routingkey, data);
