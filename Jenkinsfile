@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo $GIT_BRANCH'
-                sh "mvn install -Ddocker -Dbranch=${GIT_BRANCH}"
+                sh "mvn clean package"
             }
         }
         stage('Package') {
