@@ -5,14 +5,13 @@ pipeline {
         REPO = "333490196116.dkr.ecr.ap-south-1.amazonaws.com"
         PROJECT = "teamteach-commons"
         USER = "ec2-user"
-        DOMAIN = "myfamilycoach.ml"
     }
     
     stages{
         stage('Build') {
             steps {
                 sh 'echo $GIT_BRANCH'
-                sh "mvn clean package"
+                sh "ls -l"
             }
         }
         stage('Package') {
